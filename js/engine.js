@@ -113,7 +113,7 @@ var Engine = (function(global) {
     // playerW, playerH, enemyW, and enemyH is Object character width and height
     function checkCollisions(playerX, playerY, playerW, playerH, enemyX, enemyY, enemyW, enemyH) {
         // Minimize the edges of the objects
-        const minTop = 5;
+        const minTop = 3;
         const minBottom = 15;
         // Player Corner Points
         const pointA = [playerX + minTop, playerY + minTop];
@@ -122,10 +122,10 @@ var Engine = (function(global) {
         const pointD = [playerX + playerW - minTop, playerY - minBottom + playerH];
 
         // Enemy Corner Points
-        const pointE = [enemyX + minTop, enemyY + minTop];
-        const pointF = [enemyX + enemyW - minTop, enemyY + minTop];
-        const pointG = [enemyX + minTop, enemyY + enemyH - minBottom];
-        const pointH = [enemyX - minTop + enemyW, enemyY - minBottom + enemyH];
+        const pointE = [enemyX , enemyY ];
+        const pointF = [enemyX + enemyW , enemyY ];
+        const pointG = [enemyX , enemyY + enemyH ];
+        const pointH = [enemyX + enemyW, enemyY  + enemyH];
 
         /*
         * check each point if its position (x,y) found in the other object.
