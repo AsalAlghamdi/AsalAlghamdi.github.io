@@ -16,7 +16,6 @@ firebase.initializeApp(firebaseConfig);
 let firstPlace = new Array();
 let secondPlace = new Array();
 let thirdPlace = new Array();
-let scores; // will take the number of survived and death of the three places and put it in one array | to 
 
 let playersData = new Array();
 function retrievePlayersData(startFrame, waitImg) {
@@ -115,7 +114,6 @@ function retrievePlayersData(startFrame, waitImg) {
             }
             index++;
         }); 
-        // creatPlayerListOnHtml();
         setTimeout(function(){
             waitImg.style.display = "none";
             startFrame();
