@@ -31,7 +31,7 @@ var Enemy = function (x, y, speed) {
 };
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
-Enemy.prototype.update = function (dt) { // For moves the character in x y by (dt Unit) or maybe not :)
+Enemy.prototype.update = function (dt) { 
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
@@ -41,8 +41,6 @@ Enemy.prototype.update = function (dt) { // For moves the character in x y by (d
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function () {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-    /* ctx.fillStyle = 'green';
-    ctx.fillRect(this.x, this.y, 98, 67); */
 };
 
 // Now write your own player class
@@ -80,8 +78,6 @@ Player.prototype.update = function (dt){
 }
 Player.prototype.render = function () {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y, this.width, this.height); 
-    /* ctx.fillStyle = 'red';
-    ctx.fillRect(this.x, this.y, 67, 76); */
 }
 Player.prototype.handleInput = function(keyPressed){
     switch (keyPressed){
@@ -129,7 +125,7 @@ document.addEventListener('keyup', function(e) {
     player.handleInput(allowedKeys[e.keyCode]);
 });
 
-// Touch Events for mobiles screen
+// Screen Button Events for mobiles screen
 document.querySelector('#leftArrow').addEventListener('click', function () {
     player.handleInput("left");
 });
