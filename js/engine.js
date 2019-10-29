@@ -52,38 +52,20 @@ var Engine = (function(global) {
             }, 1000);
         }
     }
-    /* This function serves as the kickoff point for the game loop itself
-     * and handles properly calling the update and render methods.
-     */
     function main() {
         startTimer(startTimerBool);
         if (startTimerBool) {
             lastTime = Date.now();
         }
         startTimerBool = false;
-        /* Get our time delta information which is required if your game
-         * requires smooth animation. Because everyone's computer processes
-         * instructions at different speeds we need a constant value that
-         * would be the same for everyone (regardless of how fast their
-         * computer is) - hurray time!
-         */
-        var now = Date.now(),
-            dt = (now - lastTime) / 1000.0;
 
-        /* Call our update/render functions, pass along the time delta to
-         * our update function since it may be used for smooth animation.
-         */
+        var now = Date.now(), dt = (now - lastTime) / 1000.0;
+
         update(dt);
         render();
 
-        /* Set our lastTime variable which is used to determine the time delta
-         * for the next time this function is called.
-         */
         lastTime = now;
 
-        /* Use the browser's requestAnimationFrame function to call this
-         * function again as soon as the browser is able to draw another frame.
-         */
         if (!timeEnd) {
             requestAnimationID = win.requestAnimationFrame(main);
             if (cancelAnimation) {
@@ -93,29 +75,11 @@ var Engine = (function(global) {
             endGameFrame();
         }
     }
-
-    /* This function does some initial setup that should only occur once,
-     * particularly setting the lastTime variable that is required for the
-     * game loop.
-     */
     function init() {
         const waitImg = loadingFrame();
         retrievePlayersData(startFrame, waitImg);
-        //reset();
-        // endGameFrame();//startFrame();
-        // lastTime = Date.now();
-        //main();
     }
 
-    /* This function is called by main (our game loop) and itself calls all
-     * of the functions which may need to update entity's data. Based on how
-     * you implement your collision detection (when two entities occupy the
-     * same space, for instance when your character should die), you may find
-     * the need to add an additional function call here. For now, we've left
-     * it commented out - you may or may not want to implement this
-     * functionality this way (you could just implement collision detection
-     * on the entities themselves within your app.js file).
-     */
     function update(dt) {
         updateEntities(dt);
         if (player.y <= 50) {
@@ -137,7 +101,6 @@ var Engine = (function(global) {
                         player.die(false);
                         player.changeCharacter();
                         playerInfoBar.dead++;
-                        //win.cancelAnimationFrame(main);
                     }, 400);
                     break;
                 }
@@ -147,7 +110,6 @@ var Engine = (function(global) {
         
     }
     
-    // I think to assign it to proto in enemy object
     // playerW, playerH, enemyW, and enemyH is Object character width and height
     function checkCollisions(playerX, playerY, playerW, playerH, enemyX, enemyY, enemyW, enemyH) {
         // Minimize the edges of the objects
@@ -165,11 +127,6 @@ var Engine = (function(global) {
         const pointG = [enemyX + minTop, enemyY + enemyH - minBottom];
         const pointH = [enemyX - minTop + enemyW, enemyY - minBottom + enemyH];
 
-        /* ctx.fillStyle = 'green';
-        ctx.fillRect(enemyX, enemyY, 98, 67);
-        ctx.fillStyle = 'red';
-        ctx.fillRect(playerX + minNum, playerY, 98 - minNum, 67 - minNum); 
-        */
         /*
         * check each point if its position (x,y) found in the other object.
         * CASE #1
@@ -303,25 +260,12 @@ var Engine = (function(global) {
         }
         return false;
     }
-    /* This is called by the update function and loops through all of the
-     * objects within your allEnemies array as defined in app.js and calls
-     * their update() methods. It will then call the update function for your
-     * player object. These update methods should focus purely on updating
-     * the data/properties related to the object. Do your drawing in your
-     * render methods.
-     */
     function updateEntities(dt) {
         allEnemies.forEach(function(enemy) {
             enemy.update(dt);
         });
         player.update();
     }
-    /* This function initially draws the "game level", it will then call
-     * the renderEntities function. Remember, this function is called every
-     * game tick (or loop of the game engine) because that's how games work -
-     * they are flipbooks creating the illusion of animation but in reality
-     * they are just drawing the entire screen over and over.
-     */
     function render() {
         /* This array holds the relative URL to the image used
          * for that particular row of the game level.
@@ -386,10 +330,6 @@ var Engine = (function(global) {
         player.render();
     }
 
-    /* This function does nothing but it could have been a good place to
-     * handle game reset states - maybe a new game menu or a game over screen
-     * those sorts of things. It's only called once by the init() method.
-     */
     function reset() {
         // noop
     }
@@ -409,7 +349,6 @@ var Engine = (function(global) {
         return waitImg;
     }
     function startFrame(){
-        //canvas.style.borderStyle = "solid";
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         canvas.style.backgroundImage = "url('images/background.jpg')";
         canvas.style.backgroundRepeat = "repeat";
@@ -558,15 +497,6 @@ var Engine = (function(global) {
         context.fillText(line, x, y);
     }
 
-    function goTo(page) {
-        if (page === "storyPage"){
-            storyPage();
-        }
-        if (page === "main") {
-            main();
-        }
-    }
-
     /* Go ahead and load all of the images we know we're going to need to
      * draw our game level. Then set init as the callback method, so that when
      * all of these images are properly loaded our game will start.
@@ -597,4 +527,3 @@ var Engine = (function(global) {
      */
     global.ctx = ctx;
 })(this);
-
