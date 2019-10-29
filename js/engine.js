@@ -150,31 +150,20 @@ var Engine = (function(global) {
     // I think to assign it to proto in enemy object
     // playerW, playerH, enemyW, and enemyH is Object character width and height
     function checkCollisions(playerX, playerY, playerW, playerH, enemyX, enemyY, enemyW, enemyH) {
-        /* for (let i = playerX; i <= playerX + playerW; i++) {
-            if (i >= enemyX && i <= enemyX + enemyW) { // to make better performance and just check the collision between border of the objects
-                for (let j = playerY; j <= playerY + playerH; j++) {
-                    if (j >= enemyY && j <= enemyY + enemyH) {
-                        return true;
-                    }
-                }
-                break;
-            }
-        }
-        return false; */
-
         // Minimize the edges of the objects
-        const minNum = 5;
+        const minTop = 5;
+        const minBottom = 15;
         // Player Corner Points
-        const pointA = [playerX + minNum, playerY + minNum];
-        const pointB = [playerX + playerW - minNum, playerY + minNum];
-        const pointC = [playerX + minNum, playerY + playerH - minNum];
-        const pointD = [playerX + playerW - minNum, playerY - minNum + playerH];
+        const pointA = [playerX + minTop, playerY + minTop];
+        const pointB = [playerX + playerW - minTop, playerY + minTop];
+        const pointC = [playerX + minTop, playerY + playerH - minBottom];
+        const pointD = [playerX + playerW - minTop, playerY - minBottom + playerH];
 
         // Enemy Corner Points
-        const pointE = [enemyX + minNum, enemyY + minNum];
-        const pointF = [enemyX + enemyW - minNum, enemyY + minNum];
-        const pointG = [enemyX + minNum, enemyY + enemyH - minNum];
-        const pointH = [enemyX - minNum + enemyW, enemyY - minNum + enemyH];
+        const pointE = [enemyX + minTop, enemyY + minTop];
+        const pointF = [enemyX + enemyW - minTop, enemyY + minTop];
+        const pointG = [enemyX + minTop, enemyY + enemyH - minBottom];
+        const pointH = [enemyX - minTop + enemyW, enemyY - minBottom + enemyH];
 
         /* ctx.fillStyle = 'green';
         ctx.fillRect(enemyX, enemyY, 98, 67);
