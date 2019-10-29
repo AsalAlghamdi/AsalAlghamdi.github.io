@@ -1,21 +1,12 @@
-# Memory Game
-It is a simple game I created with Javascript, HTML and CSS
-
-## How to play the game 
-Try to find the match cards to win the game, there is a timer try to figure all card in the least time and least steps.
-
-## There are a three Emojis the player can get [🔥, 👍, 🐢]:
-- 🔥 : means the speed of player is fast 
-- 👍 : means the speed of player is average 
-- 🐢 : means the speed player is slow
-
-## The Golden Medal 🥇
-The golden medal is given for one player who get three stars and was the faster one who take minimum time to end the game.
-
+# Arcade Game 🎲
+It is a web game, by Javascript language.
+## Story of The Game 📜
+***"Once upon a time, there was a small happy village, and one day the EVIL WITCH came and turn everyone into dwarfs!! the poor villagers want to get back to thier normal size and the only way to heal from this curse is to go to the waterside where there is a magic water will turn off the curse."***
+## Player Mission ⚔
+Player mission is to rive every villagers as possible as he can to the magic water, but he must be careful from the giant predatory bugs in just one minute and a half before the magic of water fades.
+## How to Win in The Game 🥇🥈🥉
+There are three first places, players win when they save more villagers with minimume lifes lost.
 ## Project Dependencies Used in The Project
-- Bootstrap font-awesome. [link](https://fontawesome.bootstrapcheatsheets.com/)
-- Daneden animate.css. [link](https://github.com/daneden/animate.css)
 - Firebase real time database. [link](https://firebase.google.com/docs/database/web/start)
-
 ## URL Link 🔗
-https://memorygame-ae106.web.app/
+https://asalalghamdi.github.io/
