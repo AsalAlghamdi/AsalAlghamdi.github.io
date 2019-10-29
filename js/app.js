@@ -53,7 +53,7 @@ var Player = function (x, y, width, height) {
     // we've provided one for you to get started
     this.x = x;
     this.y = y;
-    this.speed = 20;
+    this.speed = 25;
     this.width = width;
     this.height = height;
     this.name = "Player";
