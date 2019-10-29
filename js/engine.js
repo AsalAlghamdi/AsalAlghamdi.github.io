@@ -379,8 +379,8 @@ var Engine = (function(global) {
         }
         ctx.fillText(firstWinner, 200, 420);
         ctx.font = "bold 15px Comic Sans MS";
-        ctx.fillText(secondWinner, 90, 430);
-        ctx.fillText(thirdWinner, 339, 430);
+        ctx.fillText(thirdWinner, 90, 430);
+        ctx.fillText(secondWinner, 339, 430);
 
         ctx.drawImage(Resources.get('images/startBtn.png'), 185, 500, 140, 140);
 
